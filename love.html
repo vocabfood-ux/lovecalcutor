@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Love Result 💔</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1 id="percent">89% Love ❤️</h1>
+
+    <p id="prankText"></p>
+
+    <button onclick="createNewPrank()">Create Prank Link 😈</button>
+    <button onclick="shareWhatsApp()">Share on WhatsApp 📲</button>
+    <button onclick="copyLink()">Copy Link 🔗</button>
+
+    <p class="disclaimer">
+      ⚠️ This is a prank website. No real data is stored.
+    </p>
+  </div>
+
+  <script>
+    const yourName = localStorage.getItem("yourName");
+    const crushName = localStorage.getItem("crushName");
+    const percent = localStorage.getItem("lovePercent") || 89;
+
+    document.getElementById("percent").innerText = `${percent}% Love ❤️`;
+
+    document.getElementById("prankText").innerText =
+      `😂 You have been fooled!\n\nYour name "${yourName}" and your crush "${crushName}" have been secretly sent to PRANKER_NAME.`;
+
+    function createNewPrank() {
+      window.location.href = "index.html";
+    }
+
+    function shareWhatsApp() {
+      const text = `💘 Check our love percentage 😍\n${window.location.href}`;
+      window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank");
+    }
+
+    function copyLink() {
+      navigator.clipboard.writeText(window.location.href);
+      alert("Link copied! 😎");
+    }
+  </script>
+</body>
+</html>
